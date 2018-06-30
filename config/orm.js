@@ -1,5 +1,5 @@
 // Import MySQL connection.
-var connection = require("../config/connection.js");
+var connection = require("./connection.js");
 
 
 // Helper function for SQL syntax.
@@ -28,6 +28,7 @@ function objToSql(ob) {
             }
 
             arr.push(key + "=" + value);
+            // console.log(value);
         }
     };
 
@@ -61,7 +62,7 @@ var orm = {
         queryString += printQuestionMarks(vals.length);
         queryString += ") ";
 
-        console.log(queryString);
+        console.log('this is our create statement',queryString);
 
         connection.query(queryString, vals, function(err, result) {
             if (err) {

@@ -18,9 +18,14 @@ router.get("/", function(req, res) {
 });
 
 router.post("/api/burgers", function(req, res) {
-  burger.create([req.body.name], function(result) {
+    var newBurger = [req.body.name];
     
+    console.log(newBurger);
+
+  burger.create(['burger_name', 'devoured'],[newBurger, false], function(result) {
     res.json({ id: result.insertId });
+    // res.redirect("/");
+    // console.log(result.insertId);
   });
 });
 
@@ -34,6 +39,7 @@ router.put("/api/burgers/:id", function(req, res) {
         // If no rows were changed, then the ID must not exist, so 404
         return res.status(404).end();
       } else {
+        //   res.redirect("/");
           res.status(200).end();
       }
     });

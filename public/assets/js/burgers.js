@@ -24,15 +24,15 @@ $(function() {
       // Make sure to preventDefault on a submit event.
       event.preventDefault();
   
-      // var name = $("[name=burger-name]").val().trim();
+      var name = $("[name=burger-name]").val().trim();
 
-      // if(name !== "") {
+      if(name !== "") {
         var newBurger = {
-          name: $("[name=burger-name]").val().trim()
+          name: name
         };
-  
+  console.log(name);
       // Send the POST request.
-      $.ajax("/api/burgers", {
+      $.ajax("/api/burgers/", {
         type: "POST",
         data: newBurger
       }).then(function() {
@@ -40,9 +40,9 @@ $(function() {
           // Reload the page to get the updated list
           location.reload();
         });
-      // } else {
-      //   $("[name=burger-name]").val().trim();
-      // };
+      } else {
+        $("[name=burger-name]").val().trim();
+      };
     });
   });
   
